@@ -6,20 +6,26 @@
 //  ○ DELETE /api/tasks/:id - Eliminar una tarea 
  */
 
-
+const express = require("express");
+// crear una instancia de la aplicación Express
 const router = express.Router();
-
 // Array en memoria para almacenar las tareas (pedido en el enunciado)
-let tasks = [];
+let tasks = [
+  { id: 1, title: "Aprender Git", completed: true },
+  { id: 2, title: "Configurar backend con Express", completed: false },
+  { id: 3, title: "Crear frontend con React", completed: false },
+  { id: 4, title: "Hacer deploy del proyecto", completed: false },
+];
+
 
 
 // Endpoint para obtener todas las tareas
-app.get("/api/tasks", (req, res) => {
+router.get("/", (req, res) => {
     //retornamos todas las tareas(el array)
   res.json(tasks);
 });
 // Endpoint para crear una tarea todas las tareas
-app.post("/api/tasks", (req, res) => {
+router.post("/", (req, res) => {
     //sacamos el body de la request
     const { body } = req;
     //creamos la tarea ledamos un id unico sacando el largo del array +1 y adicionaos el body
@@ -28,7 +34,7 @@ app.post("/api/tasks", (req, res) => {
     res.status(201).json(tasks[tasks.length - 1]);
 });
 // Endpoint para modifoicar una tareas.
-app.put("/api/tasks/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   //sacamos el id de los parametros
   const { id } = req.params.id;
     //sacamos el body de la request
@@ -46,7 +52,7 @@ app.put("/api/tasks/:id", (req, res) => {
       res.json(tasks);
 });
 // Endpoint para eliminar 1 tarea.
-app.delete("/api/tasks:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     //sacamos el id de los parametros
     const { id } = req.params;
     //buscamos la tarea por id
@@ -62,3 +68,5 @@ app.delete("/api/tasks:id", (req, res) => {
     res.json({ message: "Tarea eliminada" });
        
 });
+//exportar el router en modulos
+module.exports = router;

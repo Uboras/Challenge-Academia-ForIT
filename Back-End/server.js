@@ -8,7 +8,7 @@
 const express = require("express");
 const dotev = require("dotenv");
 // Importar las rutas de tareas
-const TasksRoutes = require("./endPoint.js/task");
+const TasksRoutes = require("./endPoint/task");
 
 
 
@@ -23,7 +23,7 @@ dotev.config();
 app.use(express.json());
 
 // Importar las rutas de tareas
-app.use("./endPoint.js/task",TasksRoutes);
+app.use("/api/tasks",TasksRoutes);
 
 // Iniciar el servidor
 app.listen(PORT, () => {
