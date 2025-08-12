@@ -1,18 +1,19 @@
 import Header from '../components/header';
 import TaskList from '../components/task/listTask.jsx';
-
+import Fondo from '../assets/fondo.avif';
+import Footer from '../components/footer';
 export default function AllTask() {
-  const tasks = [
-    { id: 1, title: 'Task 1', description: 'Description for Task 1', completed: true, Date: '2023-10-01' },
-    { id: 2, title: 'Task 2', description: 'Description for Task 2', completed: false, Date: '2023-10-02' },
-  ];
-
+ 
   return (
     <div>
       <Header />
       <div className="container mt-4">
-        <TaskList tasks={tasks} />
+        <div className="background background--active"
+                style={{ backgroundImage: `url(${Fondo})`, backgroundRepeat: "no-repeat", backgroundSize: 'contain', zIndex: -1, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0.3 }}>
+              </div>
+        <TaskList  />
       </div>
+      <Footer></Footer>
     </div>
   );
 }
