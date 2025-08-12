@@ -47,7 +47,7 @@ const editTask = async (id, updatedTask) => {
     if (!res.ok) throw new Error("Error al editar tarea");
 
     const data = await res.json();
-    setTasks((prev) => prev.map((t) => (t.id === id ? data : t)));
+    setTasks((prev) => prev.map((task) => (task.id === id ? data : task)));
   } catch (error) {
     console.error("editTask error:", error);
   }
@@ -55,15 +55,16 @@ const editTask = async (id, updatedTask) => {
 
   // Eliminar tarea
   const deleteTask = async (id) => {
+    console.log("Eliminando tarea con id:", id);
    await fetch(`${urlInicial}/${id}`, { 
       method: "DELETE",
     });
-    setTasks((prev) => prev.filter((t) => t.id !== id));
+         
   };
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [deleteTask, addTask, editTask]);
 
   return (
     <TaskContext.Provider value={{ tasks, addTask, editTask, deleteTask }}>

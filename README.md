@@ -4,7 +4,7 @@ Aplicación Front End orientado a Realizar tareas.
 
 ## Technologies used
 
-###Front End
+### Front End
 - [React](https://reactjs.org/) 
 -[vite]()
 - Rutas usando [React Router](https://reacttraining.com/react-router/web/guides/philosophy)
@@ -72,3 +72,17 @@ Se manejo con Git atraves de GitBash , tanto integrado con Visual studio Code , 
 ## Se trato de comentar todo el código para mayor entendimiento
 ## No se realizaron pruebas unitarias ni de integridad. 
 ## Espero evaluación y Buena semana
+
+### ScreenShots de la App funcionando...
+
+![Front-END Inicio](/screenShots/HomeFE.png)
+
+---
+
+![Front-END Inicio](/screenShots/create-lista.png)
+
+---
+
+![BackEnd Inicio](/screenShots/BackEnd.png)
+
+--- 

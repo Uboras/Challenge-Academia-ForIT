@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
     const { body } = req;
 
     const newTask = {
-    id: uuidv4(), 
+    id: body.id, 
     title: body.title || "",
     description: body.description || "",
     complete: body.complete ?? false,
@@ -62,10 +62,11 @@ router.put("/:id", (req, res) => {
 // Endpoint para eliminar 1 tarea.
 router.delete("/:id", (req, res) => {
     //sacamos el id de los parametros
+    
     const { id } = req.params;
     
     //buscamos la tarea por id
-    const taskIndex = tasks.findIndex((task) => task.id === parseInt(id));
+    const taskIndex = tasks.findIndex((task) => task.id == id);
     //si no existe la tarea ( el findIndex devuelve -1 si no encuentra nada)
     if (taskIndex === -1) {
         //si no existe la tarea mandamos un 404 que es no entontrado        

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTasks } from '../../context/taskContext.jsx';
-
+import { v4 as uuidv4 } from 'uuid';
 export default function TaskForm() {
   const { tasks, addTask, editTask } = useTasks();
   const [title, setTitle] = useState("");
@@ -35,7 +35,7 @@ export default function TaskForm() {
     } else {
       // Creación: generamos id y createdAt
       const newTask = {
-        id: Date.now().toString(), // o usa uuid
+        id:uuidv4(),
         title,
         description,
         complete,
@@ -47,7 +47,7 @@ export default function TaskForm() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{ maxWidth: '600px', margin: 'auto' }}>
       <h2>{id ? "Editar Tarea" : "Nueva Tarea"}</h2>
       <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
         <div className="mb-3">
